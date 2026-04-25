@@ -44,7 +44,7 @@ body {
     background: rgba(42, 31, 28, 0.85);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(196, 172, 144, 0.3);
     border-radius: 50px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -99,7 +99,7 @@ body {
     height: 2.5px;
     background: var(--color-primary);
     border-radius: 10px;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: opacity 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     transform-origin: center;
     box-shadow: 0 0 6px rgba(196, 172, 144, 0.3);
 }
@@ -142,7 +142,7 @@ body {
     border-radius: 30px;
     color: var(--color-primary) !important;
     font-weight: 600;
-    transition: all 0.3s ease !important;
+    transition: opacity 0.3s ease !important, transform 0.3s ease !important, background-color 0.3s ease !important, box-shadow 0.3s ease !important;
 }
 
 .nav-cta:hover {
@@ -342,7 +342,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
@@ -603,7 +603,7 @@ body {
     justify-content: center;
     margin: 0 auto 16px;
     color: var(--color-primary);
-    transition: all 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .feature-card:hover .feature-icon-wrap {
@@ -748,7 +748,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-btn:hover {
@@ -768,7 +768,7 @@ body {
     border-radius: 50%;
     background: rgba(196, 172, 144, 0.3);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .carousel-dot.active {
@@ -1598,7 +1598,7 @@ body {
     border-radius: 20px;
     padding: 40px 28px;
     text-align: center;
-    transition: all 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
     backdrop-filter: blur(5px);
 }
 

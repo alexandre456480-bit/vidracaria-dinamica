@@ -55,6 +55,8 @@ setInterval(nextSlide, 5000);
 
 // 3. Configuração do Particles.js
 document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+
     particlesJS("particles-js", {
         "particles": {
             "number": {
@@ -136,6 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
         },
         "retina_detect": true
     });
+    }, 1000);
 });
 
 // 4. Carrossel 3D de Serviços
