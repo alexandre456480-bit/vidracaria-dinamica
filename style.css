@@ -1890,3 +1890,334 @@ body {
     .service-block-number { font-size: 3.5rem; }
 }
 
+/* ================= FAQ PAGE ================= */
+.faq-section {
+    position: relative;
+    background-color: var(--color-light);
+    padding: 120px 5% 160px;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    margin-bottom: 60px;
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid rgba(196,172,144,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border-color: rgba(196,172,144,0.35);
+}
+
+.faq-item.open {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 30px rgba(196,172,144,0.2);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 24px 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover { color: var(--color-primary); }
+
+.faq-chevron {
+    flex-shrink: 0;
+    color: var(--color-primary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
+    padding: 0 28px;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 28px 24px;
+}
+
+.faq-answer p {
+    color: #685C55;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.faq-answer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.faq-answer a:hover { text-decoration: underline; }
+
+/* ================= PROMOÇÃO PAGE ================= */
+.promo-hero .page-hero-overlay {
+    background: linear-gradient(180deg, rgba(42,31,28,0.75) 0%, rgba(42,31,28,0.5) 50%, rgba(42,31,28,0.9) 100%);
+}
+
+.promo-badge-pulse {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196,172,144,0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(196,172,144,0); }
+}
+
+.promo-section {
+    position: relative;
+    background-color: var(--color-light);
+    padding: 120px 5% 160px;
+}
+
+.promo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.promo-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+}
+
+.promo-main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.promo-image-wrapper:hover .promo-main-image {
+    transform: scale(1.03);
+}
+
+.promo-image-glow {
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(196,172,144,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.promo-price-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.promo-price-card {
+    background: white;
+    border: 2px solid rgba(196,172,144,0.2);
+    border-radius: 20px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.promo-price-featured {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(196,172,144,0.08), rgba(196,172,144,0.02));
+    position: relative;
+}
+
+.promo-price-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+}
+
+.promo-price-value {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    color: var(--color-dark);
+}
+
+.promo-currency {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.promo-amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.promo-cents {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.promo-unit {
+    display: block;
+    font-size: 0.9rem;
+    color: #685C55;
+    margin-top: 4px;
+}
+
+.promo-bonus {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(135deg, rgba(196,172,144,0.12), rgba(196,172,144,0.04));
+    border: 1px solid rgba(196,172,144,0.25);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+}
+
+.promo-bonus-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.promo-bonus strong {
+    color: var(--color-dark);
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.promo-bonus p {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.promo-installment {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-darker);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.promo-installment svg { color: var(--color-primary); flex-shrink: 0; }
+.promo-installment span { font-size: 0.95rem; }
+
+.promo-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.promo-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(196,172,144,0.12);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    transition: transform 0.3s ease;
+}
+
+.promo-benefit-item:hover { transform: translateY(-3px); }
+.promo-benefit-item svg { color: var(--color-primary); flex-shrink: 0; }
+
+.promo-cta-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.15rem;
+    padding: 18px 32px;
+    animation: ctaPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(196,172,144,0.4); }
+    50% { box-shadow: 0 8px 30px rgba(196,172,144,0.6); }
+}
+
+.promo-urgency {
+    text-align: center;
+    margin-top: 16px;
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 0.95rem;
+    animation: urgencyBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes urgencyBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ================= RESPONSIVIDADE FAQ / PROMO ================= */
+@media (max-width: 900px) {
+    .promo-container { grid-template-columns: 1fr; gap: 40px; }
+    .faq-question { font-size: 1rem; padding: 20px 22px; }
+    .faq-answer { padding: 0 22px; }
+    .faq-item.open .faq-answer { padding: 0 22px 20px; }
+}
+
+@media (max-width: 500px) {
+    .promo-price-cards { grid-template-columns: 1fr; }
+    .promo-benefits { grid-template-columns: 1fr; }
+    .promo-amount { font-size: 2.8rem; }
+}
+
