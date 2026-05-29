@@ -7,9 +7,17 @@ if (hamburger) {
         navLinks.classList.toggle('open');
     });
     navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('open');
+        link.addEventListener('click', (e) => {
+            if (link.classList.contains('dropdown-toggle')) {
+                e.preventDefault();
+                const menu = link.nextElementSibling;
+                if (menu) {
+                    menu.classList.toggle('open');
+                }
+            } else {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            }
         });
     });
 }
