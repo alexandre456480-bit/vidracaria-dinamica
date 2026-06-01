@@ -837,6 +837,18 @@ body {
     transform: translateY(0);
 }
 
+/* Remove completamente atrasos, transições e efeitos de reveal nas páginas e seções de blog */
+.blog-section .reveal,
+.article-section .reveal,
+.blog-card,
+.article-card,
+.article-sidebar {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
 .text-center { text-align: center; margin-left: auto; margin-right: auto; }
 
 /* ================= SEÇÃO FOTOS ESPALHADAS ================= */
