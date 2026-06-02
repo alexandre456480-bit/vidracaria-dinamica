@@ -2015,6 +2015,109 @@ body {
     50% { box-shadow: 0 0 0 12px rgba(196,172,144,0); }
 }
 
+/* Esteira Infinita de Box (Moving Right) */
+.hero-marquee-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 35px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding: 10px 0;
+    pointer-events: auto;
+}
+
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+    animation: scroll-right 28s linear infinite;
+}
+
+/* Pausa suave no hover no desktop */
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    width: 135px;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(196, 172, 144, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    background: var(--color-darker);
+}
+
+.marquee-item:hover {
+    transform: scale(1.06) translateY(-4px);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 30px rgba(196, 172, 144, 0.5);
+}
+
+.marquee-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Otimização Responsiva e Visual Mobile da Esteira */
+@media (max-width: 768px) {
+    .promo-hero {
+        min-height: 580px !important;
+        height: auto;
+        padding-top: 110px;
+        padding-bottom: 70px;
+    }
+    
+    .hero-marquee-wrapper {
+        margin-top: 25px;
+        margin-bottom: 0;
+        padding: 5px 0;
+    }
+    
+    .marquee-item {
+        width: 160px;
+        height: 213px;
+        border-radius: 12px;
+        border: 1.5px solid rgba(196, 172, 144, 0.4);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .marquee-content {
+        gap: 14px;
+        animation: scroll-right 22s linear infinite;
+    }
+}
+
 .promo-section {
     position: relative;
     background-color: var(--color-light);
