@@ -2860,3 +2860,35 @@ body:has(.blog-section) .page-hero-bg {
     }
 }
 
+/* Seção SEO do Footer */
+.footer-seo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 5%;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+}
+
+.footer-seo p {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+}
+
+.footer-seo p strong {
+    color: rgba(255,255,255,0.5);
+    font-weight: 600;
+}
+
+.footer-seo p a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-seo p a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
