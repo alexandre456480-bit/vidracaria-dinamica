@@ -1472,6 +1472,22 @@ body {
     animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
+/* Desativação da animação e delay visual para páginas de blog */
+.article-section ~ .footer,
+.article-section,
+.blog-section,
+.blog-card,
+.blog-card img,
+.page-hero-bg {
+    transition: none !important;
+}
+
+body:has(.article-section) .page-hero-bg,
+body:has(.blog-section) .page-hero-bg {
+    animation: none !important;
+    transform: scale(1) !important;
+}
+
 @keyframes heroZoom {
     0% { transform: scale(1.05); }
     100% { transform: scale(1.15); }
