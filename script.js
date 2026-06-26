@@ -32,26 +32,7 @@ window.addEventListener('scroll', () => {
     }
 }, { passive: true });
 
-// 2. Carrossel Automático de Background com transições diferenciadas
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-
-function nextSlide() {
-    const leavingSlide = slides[currentSlide];
-    leavingSlide.classList.remove('active');
-    leavingSlide.classList.add('leaving');
-
-    // Remove a classe 'leaving' após a transição terminar
-    setTimeout(() => {
-        leavingSlide.classList.remove('leaving');
-    }, 1600);
-
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
-// Troca a imagem a cada 5 segundos
-setInterval(nextSlide, 5000);
+// 2. Esteira de background — controlada via CSS (hero-belt-scroll), sem JS necessário
 
 // 3. Configuração do Particles.js
 document.addEventListener("DOMContentLoaded", function() {

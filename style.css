@@ -162,90 +162,55 @@ body {
     overflow: hidden;
 }
 
-/* Background Slider */
-.hero-slider {
+/* Background Esteira (Belt) */
+.hero-belt {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+.hero-belt-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out, filter 1.5s ease-in-out;
+    will-change: transform;
+    animation: hero-belt-scroll 20s linear infinite;
 }
 
-/* Slide 1 — Zoom In */
-.slide:nth-child(1) {
-    transform: scale(1.15);
-}
-.slide:nth-child(1).active {
-    opacity: 1;
-    transform: scale(1);
-}
-.slide:nth-child(1).leaving {
-    opacity: 0;
-    transform: scale(0.95);
-    filter: blur(4px);
+.hero-belt-track img {
+    height: 100%;
+    width: auto;
+    min-width: 33.34vw;
+    max-width: 33.34vw;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
 }
 
-/* Slide 2 — Deslizar da Esquerda */
-.slide:nth-child(2) {
-    transform: translateX(-8%) scale(1.02);
-}
-.slide:nth-child(2).active {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-}
-.slide:nth-child(2).leaving {
-    opacity: 0;
-    transform: translateX(8%) scale(1.02);
+@keyframes hero-belt-scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
-/* Slide 3 — Deslizar da Direita */
-.slide:nth-child(3) {
-    transform: translateX(8%) scale(1.02);
-}
-.slide:nth-child(3).active {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-}
-.slide:nth-child(3).leaving {
-    opacity: 0;
-    transform: translateX(-8%) scale(1.02);
-}
-
-/* Slide 4 — Zoom Out + Rotação sutil */
-.slide:nth-child(4) {
-    transform: scale(0.92) rotate(-1deg);
-}
-.slide:nth-child(4).active {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-}
-.slide:nth-child(4).leaving {
-    opacity: 0;
-    transform: scale(1.1) rotate(1deg);
-    filter: blur(3px);
-}
-
-/* Overlay escuro para garantir leitura */
+/* Overlay escuro + transparência para destacar o texto */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent; /* Transparência removida */
+    background: rgba(10, 8, 6, 0.55);
     z-index: 2;
 }
 
@@ -395,10 +360,16 @@ body {
 @media (max-width: 900px) {
     .headline { font-size: 1.2rem; }
     .hero-text-logo { font-size: 2rem; letter-spacing: 2px; }
-    .hero-overlay { background: transparent; }
     .hero { justify-content: center; }
     .hero-text-wrapper { align-items: center; text-align: center; margin-top: 60px; }
     .hero-buttons { justify-content: center; }
+    .hero-belt-track img {
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+    .hero-belt-track {
+        animation: hero-belt-scroll 50s linear infinite;
+    }
     .nav-links { display: none; }
 }
 
