@@ -36,90 +36,95 @@ window.addEventListener('scroll', () => {
 
 // 3. Configuração do Particles.js
 document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 40,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#c4ac90" // Cor principal de destaque (Dourado/Bege)
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                }
-            },
-            "opacity": {
-                "value": 0.4,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                    "enable": true,
-                    "speed": 2,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": false // Desabilitado para ter efeito apenas de partículas subindo
-            },
-            "move": {
-                "enable": true,
-                "speed": 1.5,
-                "direction": "top", // Partículas subindo
-                "random": true,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
+    // Inicializar particlesJS apenas em dispositivos com tela maior que 768px (Desktop e tablets maiores)
+    // para economizar CPU em dispositivos móveis e acelerar a Thread Principal na pintura inicial.
+    if (window.innerWidth > 768) {
+        setTimeout(function() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS("particles-js", {
+                    "particles": {
+                        "number": {
+                            "value": 40,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#c4ac90" // Cor principal de destaque (Dourado/Bege)
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.4,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 2,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": false // Desabilitado para ter efeito apenas de partículas subindo
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 1.5,
+                            "direction": "top", // Partículas subindo
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "bubble"
+                            },
+                            "onclick": {
+                                "enable": false
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "bubble": {
+                                "distance": 200,
+                                "size": 6,
+                                "duration": 0.3,
+                                "opacity": 0.8,
+                                "speed": 3
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
             }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "bubble"
-                },
-                "onclick": {
-                    "enable": false
-                },
-                "resize": true
-            },
-            "modes": {
-                "bubble": {
-                    "distance": 200,
-                    "size": 6,
-                    "duration": 0.3,
-                    "opacity": 0.8,
-                    "speed": 3
-                }
-            }
-        },
-        "retina_detect": true
-    });
-    }, 1000);
+        }, 1500);
+    }
 });
 
 // 4. Carrossel 3D de Serviços
@@ -263,8 +268,11 @@ document.querySelectorAll('.trust-content, .trust-gallery, .features-grid, .serv
     revealObserver.observe(el);
 });
 
-// 7. Scattered Gallery Animation
+// 7. Scattered Gallery Animation - Otimizado com IntersectionObserver
 document.addEventListener('DOMContentLoaded', () => {
+    const gallerySection = document.querySelector('.scattered-gallery');
+    if (!gallerySection) return;
+
     const imagesList = [
         'sessão imagens/1.webp',
         'sessão imagens/2.webp',
@@ -276,49 +284,63 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const slots = document.querySelectorAll('.scattered-slot');
     if (slots.length === 0) return;
-    
-    let currentImages = [];
-    
-    // Inicia os slots com imagens aleatórias sem repetir
-    let shuffled = [...imagesList].sort(() => 0.5 - Math.random());
-    
-    slots.forEach((slot, index) => {
-        const front = slot.querySelector('.img-front');
-        const back = slot.querySelector('.img-back');
+
+    const startGallery = () => {
+        let currentImages = [];
         
-        front.src = shuffled[index];
-        front.classList.add('active');
-        back.classList.add('hidden');
-        currentImages.push(shuffled[index]);
-    });
-    
-    // Função para trocar uma imagem aleatória
-    setInterval(() => {
-        const randomSlotIndex = Math.floor(Math.random() * slots.length);
-        const slot = slots[randomSlotIndex];
-        const front = slot.querySelector('.img-front');
-        const back = slot.querySelector('.img-back');
+        // Inicia os slots com imagens aleatórias sem repetir
+        let shuffled = [...imagesList].sort(() => 0.5 - Math.random());
         
-        // Achar uma imagem que não está sendo mostrada no momento
-        const availableImages = imagesList.filter(img => !currentImages.includes(img));
-        const newImage = availableImages[Math.floor(Math.random() * availableImages.length)];
-        
-        // Trocar atual pela nova no array
-        currentImages[randomSlotIndex] = newImage;
-        
-        // Configurar a imagem escondida e fazer fade
-        if (front.classList.contains('hidden')) {
-            front.src = newImage;
-            front.classList.remove('hidden');
+        slots.forEach((slot, index) => {
+            const front = slot.querySelector('.img-front');
+            const back = slot.querySelector('.img-back');
+            
+            front.src = shuffled[index];
             front.classList.add('active');
             back.classList.add('hidden');
-            back.classList.remove('active');
-        } else {
-            back.src = newImage;
-            back.classList.remove('hidden');
-            back.classList.add('active');
-            front.classList.add('hidden');
-            front.classList.remove('active');
-        }
-    }, 2500); // Troca uma imagem a cada 2.5s
+            currentImages.push(shuffled[index]);
+        });
+        
+        // Função para trocar uma imagem aleatória
+        setInterval(() => {
+            const randomSlotIndex = Math.floor(Math.random() * slots.length);
+            const slot = slots[randomSlotIndex];
+            const front = slot.querySelector('.img-front');
+            const back = slot.querySelector('.img-back');
+            
+            // Achar uma imagem que não está sendo mostrada no momento
+            const availableImages = imagesList.filter(img => !currentImages.includes(img));
+            const newImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+            
+            // Trocar atual pela nova no array
+            currentImages[randomSlotIndex] = newImage;
+            
+            // Configurar a imagem escondida e fazer fade
+            if (front.classList.contains('hidden')) {
+                front.src = newImage;
+                front.classList.remove('hidden');
+                front.classList.add('active');
+                back.classList.add('hidden');
+                back.classList.remove('active');
+            } else {
+                back.src = newImage;
+                back.classList.remove('hidden');
+                back.classList.add('active');
+                front.classList.add('hidden');
+                front.classList.remove('active');
+            }
+        }, 2500); // Troca uma imagem a cada 2.5s
+    };
+
+    // Usar IntersectionObserver para carregar as imagens apenas quando a seção estiver próxima (200px de margem)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startGallery();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '200px' });
+
+    observer.observe(gallerySection);
 });

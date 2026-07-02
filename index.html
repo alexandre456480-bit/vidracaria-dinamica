@@ -22,17 +22,9 @@
 </script>
 
     <script>
-  fbq('track', 'Contact');
-</script>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18177888580"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18177888580');
+  if (typeof fbq === 'function') {
+      fbq('track', 'Contact');
+  }
 </script>
 
      <!-- Google Tag Manager -->
@@ -64,8 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"></noscript>
     <link rel="stylesheet" href="style.css">
 
     <!-- Structured Data: LocalBusiness -->
@@ -186,19 +178,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <!-- Esteira de Imagens Background -->
         <div class="hero-belt">
             <div class="hero-belt-track">
-                <img src="hero section/vidracaria-dinamica-em-goiania.webp" alt="Vidraçaria Dinâmica em Goiânia" width="600" height="900">
+                <img src="hero section/vidracaria-dinamica-em-goiania.webp" alt="Vidraçaria Dinâmica em Goiânia" width="600" height="900" fetchpriority="high">
                 <img src="hero section/vidracaria-em-goiania-vidracaria-dinamica.webp" alt="Vidraçaria em Goiânia Vidraçaria Dinâmica" width="600" height="900">
                 <img src="hero section/vidracaria-em-goiania.webp" alt="Vidraçaria em Goiânia" width="600" height="900">
-                <img src="hero section/vidracaria-goiania.webp" alt="Vidraçaria Goiânia" width="600" height="900">
-                <img src="hero section/vidraceiro-em-goiania.webp" alt="Vidraceiro em Goiânia" width="600" height="900">
-                <img src="hero section/box-de-vidro-goiania.webp" alt="Box de vidro Goiânia" width="600" height="900">
+                <img src="hero section/vidracaria-goiania.webp" alt="Vidraçaria Goiânia" width="600" height="900" loading="lazy">
+                <img src="hero section/vidraceiro-em-goiania.webp" alt="Vidraceiro em Goiânia" width="600" height="900" loading="lazy">
+                <img src="hero section/box-de-vidro-goiania.webp" alt="Box de vidro Goiânia" width="600" height="900" loading="lazy">
                 <!-- Duplicação para loop infinito -->
-                <img src="hero section/vidracaria-dinamica-em-goiania.webp" alt="Vidraçaria Dinâmica em Goiânia" width="600" height="900" aria-hidden="true">
-                <img src="hero section/vidracaria-em-goiania-vidracaria-dinamica.webp" alt="Vidraçaria em Goiânia Vidraçária Dinâmica" width="600" height="900" aria-hidden="true">
-                <img src="hero section/vidracaria-em-goiania.webp" alt="Vidraçaria em Goiânia" width="600" height="900" aria-hidden="true">
-                <img src="hero section/vidracaria-goiania.webp" alt="Vidraçaria Goiânia" width="600" height="900" aria-hidden="true">
-                <img src="hero section/vidraceiro-em-goiania.webp" alt="Vidraceiro em Goiânia" width="600" height="900" aria-hidden="true">
-                <img src="hero section/box-de-vidro-goiania.webp" alt="Box de vidro Goiânia" width="600" height="900" aria-hidden="true">
+                <img src="hero section/vidracaria-dinamica-em-goiania.webp" alt="Vidraçaria Dinâmica em Goiânia" width="600" height="900" aria-hidden="true" loading="lazy">
+                <img src="hero section/vidracaria-em-goiania-vidracaria-dinamica.webp" alt="Vidraçaria em Goiânia Vidraçária Dinâmica" width="600" height="900" aria-hidden="true" loading="lazy">
+                <img src="hero section/vidracaria-em-goiania.webp" alt="Vidraçaria em Goiânia" width="600" height="900" aria-hidden="true" loading="lazy">
+                <img src="hero section/vidracaria-goiania.webp" alt="Vidraçaria Goiânia" width="600" height="900" aria-hidden="true" loading="lazy">
+                <img src="hero section/vidraceiro-em-goiania.webp" alt="Vidraceiro em Goiânia" width="600" height="900" aria-hidden="true" loading="lazy">
+                <img src="hero section/box-de-vidro-goiania.webp" alt="Box de vidro Goiânia" width="600" height="900" aria-hidden="true" loading="lazy">
             </div>
         </div>
         
@@ -324,28 +316,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="carousel-3d">
                     <div class="carousel-scene">
                         <div class="carousel-card" data-index="0">
-                            <img loading="lazy" width="800" height="600" src="imagens/organico.webp" alt="Espelhos orgânicos decorativos Goiânia">
-                            <div class="card-info"><h3>Espelhos Orgânicos</h3><p>Design exclusivo para decoração</p></div>
+                            <a href="/espelhos" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/organico.webp" alt="Espelhos orgânicos decorativos Goiânia">
+                                <div class="card-info"><h3>Espelhos Orgânicos</h3><p>Design exclusivo para decoração</p></div>
+                            </a>
                         </div>
                         <div class="carousel-card" data-index="1">
-                            <img loading="lazy" width="800" height="600" src="imagens/box_c.webp" alt="Box de vidro temperado Goiânia">
-                            <div class="card-info"><h3>Box para Banheiro</h3><p>Vidro temperado sob medida</p></div>
+                            <a href="/box-para-banheiro" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/box_c.webp" alt="Box de vidro temperado Goiânia">
+                                <div class="card-info"><h3>Box para Banheiro</h3><p>Vidro temperado sob medida</p></div>
+                            </a>
                         </div>
                         <div class="carousel-card" data-index="2">
-                            <img loading="lazy" width="800" height="600" src="imagens/porta_c.webp" alt="Portas de vidro temperado Goiânia">
-                            <div class="card-info"><h3>Portas de Vidro</h3><p>Elegância e modernidade</p></div>
+                            <a href="/portas-de-vidro" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/porta_c.webp" alt="Portas de vidro temperado Goiânia">
+                                <div class="card-info"><h3>Portas de Vidro</h3><p>Elegância e modernidade</p></div>
+                            </a>
                         </div>
                         <div class="carousel-card" data-index="3">
-                            <img loading="lazy" width="800" height="600" src="imagens/esquadrilha_c.webp" alt="Esquadrias de alumínio e vidro Goiânia">
-                            <div class="card-info"><h3>Esquadrias</h3><p>Alumínio e vidro com precisão</p></div>
+                            <a href="/esquadrias-de-aluminio" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/esquadrilha_c.webp" alt="Esquadrias de alumínio e vidro Goiânia">
+                                <div class="card-info"><h3>Esquadrias</h3><p>Alumínio e vidro com precisão</p></div>
+                            </a>
                         </div>
                         <div class="carousel-card" data-index="4">
-                            <img loading="lazy" width="800" height="600" src="imagens/guarda_c.webp" alt="Guarda-corpo de vidro Goiânia">
-                            <div class="card-info"><h3>Guarda-corpo</h3><p>Segurança com visual sofisticado</p></div>
+                            <a href="/guarda-corpo" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/guarda_c.webp" alt="Guarda-corpo de vidro Goiânia">
+                                <div class="card-info"><h3>Guarda-corpo</h3><p>Segurança com visual sofisticado</p></div>
+                            </a>
                         </div>
                         <div class="carousel-card" data-index="5">
-                            <img loading="lazy" width="800" height="600" src="imagens/fachada_c.webp" alt="Fachadas comerciais em vidro Goiânia">
-                            <div class="card-info"><h3>Fachadas Comerciais</h3><p>Impacto visual para seu negócio</p></div>
+                            <a href="/fachadas-de-vidro" style="text-decoration: none; color: inherit; display: block; height: 100%; width: 100%;">
+                                <img loading="lazy" width="800" height="600" src="imagens/fachada_c.webp" alt="Fachadas comerciais em vidro Goiânia">
+                                <div class="card-info"><h3>Fachadas Comerciais</h3><p>Impacto visual para seu negócio</p></div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -487,7 +491,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <div class="cta-map icon-3d reveal" style="transition-delay: 0.2s;">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.465809772847!2d-49.3174645!3d-16.7004651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x62d683295a4850af%3A0xc72e6040df259290!2sVidra%C3%A7aria%20Dinamica%20Performance!5e0!3m2!1spt-BR!2sbr!4v1716999999999!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.465809772847!2d-49.3174645!3d-16.7004651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x62d683295a4850af%3A0xc72e6040df259290!2sVidra%C3%A7aria%20Dinamica%20Performance!5e0!3m2!1spt-BR!2sbr!4v1716999999999!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de localização da Vidraçaria Dinâmica em Goiânia"></iframe>
             </div>
         </div>
 

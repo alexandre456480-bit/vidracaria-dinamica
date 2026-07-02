@@ -224,6 +224,12 @@ body {
     z-index: 3;
 }
 
+@media (max-width: 768px) {
+    #particles-js {
+        display: none;
+    }
+}
+
 /* Content Text */
 .hero-content {
     position: relative;
@@ -1238,7 +1244,7 @@ body {
 
 .footer-bottom {
     text-align: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.75);
     font-size: 0.9rem;
     display: flex;
     justify-content: space-between;
@@ -2843,18 +2849,18 @@ body:has(.blog-section) .page-hero-bg {
 .footer-seo p {
     font-size: 0.82rem;
     line-height: 1.7;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.7);
     margin: 0;
 }
 
 .footer-seo p strong {
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.9);
     font-weight: 600;
 }
 
 .footer-seo p a {
     color: var(--color-primary);
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.3s ease;
 }
 
