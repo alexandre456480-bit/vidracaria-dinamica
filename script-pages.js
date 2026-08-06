@@ -22,6 +22,28 @@ if (hamburger) {
     });
 }
 
+// 0.1 Desktop Dropdown — delay on mouseleave to prevent accidental close
+if (window.innerWidth > 768) {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+        let closeTimeout = null;
+
+        dropdown.addEventListener('mouseenter', () => {
+            if (closeTimeout) {
+                clearTimeout(closeTimeout);
+                closeTimeout = null;
+            }
+            dropdown.classList.add('dropdown-open');
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+            closeTimeout = setTimeout(() => {
+                dropdown.classList.remove('dropdown-open');
+                closeTimeout = null;
+            }, 200);
+        });
+    });
+}
+
 // Navbar Sticky
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -49,8 +71,13 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.15 });
 
+const isBlogPage = document.querySelector('.blog-section, .article-section') !== null;
 document.querySelectorAll('.reveal').forEach(el => {
-    revealObserver.observe(el);
+    if (isBlogPage) {
+        el.classList.add('visible');
+    } else {
+        revealObserver.observe(el);
+    }
 });
 
 // Contadores animados (página Sobre)

@@ -7,9 +7,39 @@ if (hamburger) {
         navLinks.classList.toggle('open');
     });
     navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('open');
+        link.addEventListener('click', (e) => {
+            if (link.classList.contains('dropdown-toggle')) {
+                e.preventDefault();
+                const menu = link.nextElementSibling;
+                if (menu) {
+                    menu.classList.toggle('open');
+                }
+            } else {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            }
+        });
+    });
+}
+
+// 0.1 Desktop Dropdown — delay on mouseleave to prevent accidental close
+if (window.innerWidth > 768) {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+        let closeTimeout = null;
+
+        dropdown.addEventListener('mouseenter', () => {
+            if (closeTimeout) {
+                clearTimeout(closeTimeout);
+                closeTimeout = null;
+            }
+            dropdown.classList.add('dropdown-open');
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+            closeTimeout = setTimeout(() => {
+                dropdown.classList.remove('dropdown-open');
+                closeTimeout = null;
+            }, 200);
         });
     });
 }
