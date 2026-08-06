@@ -762,23 +762,55 @@ body {
     margin-bottom: 35px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
 
 .services-list li {
     font-size: 1rem;
     color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.services-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.services-list li a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-primary);
+    padding-left: 18px;
+}
+
+.service-link-content {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .service-check {
     color: var(--color-primary);
     font-weight: 700;
     font-size: 1.1rem;
+}
+
+.service-arrow {
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.services-list li a:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+    color: var(--color-primary);
 }
 
 /* Shape Divider Services */
@@ -2901,3 +2933,34 @@ body:has(.blog-section) .page-hero-bg {
     text-decoration: underline;
 }
 
+/* Remove shape dividers and optimize spacing/padding */
+.custom-shape-divider-bottom,
+.shape-divider-trust,
+.shape-divider-services,
+.shape-divider-gallery,
+.shape-divider-how,
+.shape-divider-footer {
+    display: none !important;
+}
+
+.trust-section {
+    padding: 80px 5% !important;
+}
+
+.services-section {
+    padding: 80px 5% !important;
+}
+
+.how-it-works {
+    padding: 80px 5% !important;
+}
+
+.cta-section {
+    padding: 80px 5% !important;
+}
+
+.scattered-gallery {
+    height: auto !important;
+    padding: 80px 5% !important;
+    min-height: 550px;
+}
