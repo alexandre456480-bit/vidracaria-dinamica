@@ -2,4 +2,29 @@ User-agent: *
 Allow: /
 Disallow: /colors.png
 
+# Crawlers de IA — acesso liberado ao llms.txt e ao conteúdo do site
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://vidracariadinamica.com/sitemap.xml
+
+# Arquivo de contexto para IAs (padrão llms.txt)
+# LLMs: https://vidracariadinamica.com/llms.txt

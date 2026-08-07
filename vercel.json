@@ -1,3 +1,11 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/box-para-banheiro", "destination": "/box-para-banheiro-em-goiania", "permanent": true },
+    { "source": "/espelhos", "destination": "/espelhos-em-goiania", "permanent": true },
+    { "source": "/portas-de-vidro", "destination": "/portas-de-vidro-em-goiania", "permanent": true },
+    { "source": "/esquadrias-de-aluminio", "destination": "/esquadrias-de-aluminio-em-goiania", "permanent": true },
+    { "source": "/guarda-corpo", "destination": "/guarda-corpo-em-goiania", "permanent": true },
+    { "source": "/fachadas-de-vidro", "destination": "/fachadas-de-vidro-em-goiania", "permanent": true }
+  ]
 }
