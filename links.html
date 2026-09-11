@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Vidraçaria Dinâmica — Links rápidos para Instagram, site e orçamento. Vidros temperados, box para banheiro, espelhos e esquadrias em Goiânia.">
+    <title>Vidraçaria Dinâmica | Links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =================== RESET & BASE =================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --crimson: #710014;
+            --crimson-light: #8a1a2e;
+            --sand: #B38F6F;
+            --sand-light: #c9a98a;
+            --pearl: #F2F1ED;
+            --pearl-warm: #f7f5f0;
+            --black: #161616;
+            --black-soft: #1e1e1e;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #EBDCC9;
+            background-image: url('bg-links.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--black);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+        }
+
+        /* =================== CONTAINER =================== */
+        .links-page {
+            width: 100%;
+            max-width: 480px;
+            padding: 40px 24px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =================== LOGO CIRCULAR =================== */
+        .logo-circle {
+            width: 104px;
+            height: 104px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 10px 28px -4px rgba(113, 0, 20, 0.28), 0 4px 10px rgba(0, 0, 0, 0.06);
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* =================== HEADER INFO =================== */
+        .header-info {
+            text-align: center;
+            animation: fadeInDown 0.6s ease-out 0.1s both;
+        }
+
+        .header-info h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .header-info p {
+            font-size: 0.88rem;
+            font-weight: 400;
+            color: #2b2727;
+            line-height: 1.5;
+            max-width: 320px;
+        }
+
+        /* =================== ESTEIRA 3D =================== */
+        .carousel-section {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 8px 0;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .carousel-3d-wrapper {
+            perspective: 1000px;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            touch-action: pan-y;
+            cursor: grab;
+        }
+
+        .carousel-3d-wrapper:active { cursor: grabbing; }
+
+        .carousel-3d {
+            width: 160px;
+            height: 180px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-3d.auto-rotating {
+            transition: none;
+            animation: autoRotate 40s linear infinite;
+        }
+
+        .carousel-3d-item {
+            position: absolute;
+            width: 160px;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            backface-visibility: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            border: 2px solid rgba(179, 143, 111, 0.2);
+        }
+
+        .carousel-3d-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes autoRotate {
+            from { transform: rotateY(0deg); }
+            to   { transform: rotateY(-360deg); }
+        }
+
+        /* =================== BOTÕES =================== */
+        .buttons-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .link-btn:active {
+            transform: scale(0.97);
+        }
+
+        .link-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Instagram */
+        .btn-instagram {
+            background: linear-gradient(135deg, #833AB4, #E1306C, #F77737);
+            color: #fff;
+            box-shadow: 0 10px 26px -3px rgba(225, 48, 108, 0.42), 0 4px 12px rgba(131, 58, 180, 0.25);
+        }
+
+        .btn-instagram:hover {
+            box-shadow: 0 14px 32px -2px rgba(225, 48, 108, 0.52), 0 6px 16px rgba(131, 58, 180, 0.32);
+            transform: translateY(-2px);
+        }
+
+        /* Nosso Site */
+        .btn-site {
+            background: linear-gradient(135deg, #710014 0%, #8c0c22 100%);
+            color: var(--pearl);
+            box-shadow: 0 10px 26px -3px rgba(113, 0, 20, 0.38), 0 4px 12px rgba(113, 0, 20, 0.2);
+        }
+
+        .btn-site:hover {
+            background: linear-gradient(135deg, #7e051a 0%, #9e122b 100%);
+            box-shadow: 0 14px 32px -2px rgba(113, 0, 20, 0.48), 0 6px 16px rgba(113, 0, 20, 0.28);
+            transform: translateY(-2px);
+        }
+
+        /* Orçamento */
+        .btn-orcamento {
+            background: linear-gradient(135deg, #161616 0%, #292929 100%);
+            color: var(--pearl);
+            box-shadow: 0 10px 26px -3px rgba(22, 22, 22, 0.38), 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-orcamento:hover {
+            background: linear-gradient(135deg, #222222 0%, #353535 100%);
+            box-shadow: 0 14px 32px -2px rgba(22, 22, 22, 0.48), 0 6px 16px rgba(0, 0, 0, 0.28);
+            transform: translateY(-2px);
+        }
+
+        /* =================== FOOTER MARCA =================== */
+        .links-footer {
+            margin-top: 12px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out 0.5s both;
+        }
+
+        .links-footer p {
+            font-size: 0.7rem;
+            color: #999;
+            font-weight: 300;
+        }
+
+        .links-footer a {
+            color: var(--sand);
+            text-decoration: none;
+        }
+
+        /* =================== MODAL FORMULÁRIO =================== */
+        .form-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(22, 22, 22, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .form-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .form-panel {
+            width: 100%;
+            max-width: 480px;
+            background: var(--pearl-warm);
+            border-radius: 24px 24px 0 0;
+            padding: 28px 24px 36px;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-height: 85dvh;
+            overflow-y: auto;
+        }
+
+        .form-overlay.active .form-panel {
+            transform: translateY(0);
+        }
+
+        .form-handle {
+            width: 40px;
+            height: 4px;
+            background: #ccc;
+            border-radius: 4px;
+            margin: 0 auto 20px;
+        }
+
+        .form-panel h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 4px;
+        }
+
+        .form-panel .form-subtitle {
+            font-size: 0.8rem;
+            color: #777;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 6px;
+        }
+
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            padding: 12px 14px;
+            border: 1.5px solid #ddd;
+            border-radius: 12px;
+            background: #fff;
+            color: var(--black);
+            outline: none;
+            transition: border-color 0.2s ease;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--sand);
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            background: #25D366;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-enviar:active {
+            transform: scale(0.97);
+        }
+
+        .btn-enviar:hover {
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .btn-enviar svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-fechar {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            padding: 4px;
+        }
+
+        .form-panel { position: relative; }
+
+        /* =================== ANIMATIONS =================== */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* =================== FORMAS GEOMÉTRICAS NO BACKGROUND =================== */
+        .bg-geometric-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        /* Orbs difusos */
+        .geom-orb-1 {
+            position: absolute;
+            top: -90px;
+            right: -90px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(113, 0, 20, 0.08) 0%, rgba(179, 143, 111, 0.04) 50%, transparent 70%);
+            filter: blur(20px);
+        }
+
+        .geom-orb-2 {
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(179, 143, 111, 0.12) 0%, rgba(113, 0, 20, 0.03) 50%, transparent 70%);
+            filter: blur(20px);
+        }
+
+        /* Formas geométricas angulares translúcidas (vidro / lapidação) */
+        .geom-diamond-1 {
+            position: absolute;
+            top: 60px;
+            left: -35px;
+            width: 110px;
+            height: 110px;
+            border: 1.5px solid rgba(179, 143, 111, 0.35);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(179, 143, 111, 0.05) 100%);
+            transform: rotate(45deg);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(179, 143, 111, 0.08);
+        }
+
+        .geom-diamond-2 {
+            position: absolute;
+            top: 42%;
+            right: -40px;
+            width: 130px;
+            height: 130px;
+            border: 1.5px solid rgba(113, 0, 20, 0.18);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(113, 0, 20, 0.03) 100%);
+            transform: rotate(35deg);
+            border-radius: 22px;
+        }
+
+        .geom-circle-ring {
+            position: absolute;
+            top: 220px;
+            right: 12px;
+            width: 80px;
+            height: 80px;
+            border: 1.5px dashed rgba(179, 143, 111, 0.35);
+            border-radius: 50%;
+        }
+
+        .geom-glass-plate {
+            position: absolute;
+            bottom: 120px;
+            left: 10px;
+            width: 90px;
+            height: 140px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.4) 0%, rgba(240, 235, 228, 0.15) 100%);
+            transform: rotate(-18deg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        .geom-square-small {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            width: 44px;
+            height: 44px;
+            border: 1.5px solid rgba(179, 143, 111, 0.4);
+            transform: rotate(25deg);
+            border-radius: 8px;
+        }
+
+        /* Grade sutil geométrica */
+        .geom-grid-pattern {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            opacity: 0.18;
+        }
+
+        .links-page { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+
+    <!-- Formas Geométricas Decorativas no Fundo -->
+    <div class="bg-geometric-container" aria-hidden="true">
+        <div class="geom-orb-1"></div>
+        <div class="geom-orb-2"></div>
+        <div class="geom-diamond-1"></div>
+        <div class="geom-diamond-2"></div>
+        <div class="geom-circle-ring"></div>
+        <div class="geom-glass-plate"></div>
+        <div class="geom-square-small"></div>
+        <svg class="geom-grid-pattern" width="90" height="90" viewBox="0 0 90 90" fill="none">
+            <circle cx="10" cy="10" r="2" fill="#B38F6F"/>
+            <circle cx="35" cy="10" r="2" fill="#B38F6F"/>
+            <circle cx="60" cy="10" r="2" fill="#B38F6F"/>
+            <circle cx="85" cy="10" r="2" fill="#B38F6F"/>
+            <circle cx="10" cy="35" r="2" fill="#B38F6F"/>
+            <circle cx="35" cy="35" r="2" fill="#B38F6F"/>
+            <circle cx="60" cy="35" r="2" fill="#B38F6F"/>
+            <circle cx="85" cy="35" r="2" fill="#B38F6F"/>
+            <circle cx="10" cy="60" r="2" fill="#B38F6F"/>
+            <circle cx="35" cy="60" r="2" fill="#B38F6F"/>
+            <circle cx="60" cy="60" r="2" fill="#B38F6F"/>
+            <circle cx="85" cy="60" r="2" fill="#B38F6F"/>
+            <line x1="10" y1="10" x2="85" y2="85" stroke="#B38F6F" stroke-width="0.75" stroke-dasharray="3 3"/>
+        </svg>
+    </div>
+
+    <main class="links-page">
+
+        <!-- LOGO -->
+        <div class="logo-circle">
+            <img src="logop.webp" alt="Vidraçaria Dinâmica" width="94" height="94">
+        </div>
+
+        <!-- INFO -->
+        <div class="header-info">
+            <h1>Vidraçaria Dinâmica</h1>
+            <p>Há mais de 40 anos transformando espaços com vidros, espelhos e esquadrias em Goiânia e região.</p>
+        </div>
+
+        <!-- ESTEIRA 3D -->
+        <section class="carousel-section" aria-label="Galeria de projetos">
+            <div class="carousel-3d-wrapper" id="carouselWrapper">
+                <div class="carousel-3d auto-rotating" id="carousel3d">
+                    <div class="carousel-3d-item"><img src="sessão imagens/4.webp" alt="Box de vidro para banheiro" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="hero section/box-de-vidro-goiania.webp" alt="Box de vidro em Goiânia" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="imagens/fachada_c.webp" alt="Fachada de vidro" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="imagens/escadas_c.webp" alt="Guarda-corpo em escada" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="imagens/esquadrilha_c.webp" alt="Esquadrias de alumínio" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="sessão imagens/1.webp" alt="Escada com vidro temperado" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="imagens/guarda_c.webp" alt="Guarda-corpo de vidro" loading="lazy"></div>
+                    <div class="carousel-3d-item"><img src="imagens/porta_c.webp" alt="Porta de vidro temperado" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTÕES -->
+        <div class="buttons-group">
+            <a href="https://instagram.com/adrianocezarconsultoria" target="_blank" rel="noopener" class="link-btn btn-instagram" id="btnInstagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                Instagram
+            </a>
+
+            <a href="/" class="link-btn btn-site" id="btnSite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Nosso Site
+            </a>
+
+            <button class="link-btn btn-orcamento" id="btnOrcamento" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Fazer Orçamento
+            </button>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="links-footer">
+            <p>&copy; 2026 Vidraçaria Dinâmica</p>
+        </footer>
+    </main>
+
+    <!-- =================== MODAL FORMULÁRIO =================== -->
+    <div class="form-overlay" id="formOverlay">
+        <div class="form-panel" id="formPanel">
+            <div class="form-handle"></div>
+            <button class="btn-fechar" id="btnFechar" type="button" aria-label="Fechar formulário">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <h2>Solicitar Orçamento</h2>
+            <p class="form-subtitle">Preencha abaixo e enviaremos sua mensagem direto ao nosso WhatsApp.</p>
+
+            <form id="formOrcamento">
+                <div class="form-group">
+                    <label for="selectServico">Escolha o serviço</label>
+                    <select id="selectServico" required>
+                        <option value="" disabled selected>Selecione uma opção</option>
+                        <option value="Box de Vidro para Banheiro">Box de Vidro para Banheiro</option>
+                        <option value="Esquadrias de Alumínio">Esquadrias de Alumínio</option>
+                        <option value="Espelhos sob Medida">Espelhos sob Medida</option>
+                        <option value="Guarda-corpo de Vidro">Guarda-corpo de Vidro</option>
+                        <option value="Porta de Vidro">Porta de Vidro</option>
+                        <option value="Fachada de Vidro">Fachada de Vidro</option>
+                        <option value="Fechamento de Sacada">Fechamento de Sacada</option>
+                        <option value="Cobertura de Vidro">Cobertura de Vidro</option>
+                        <option value="Divisória de Vidro">Divisória de Vidro</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="textDescricao">Descreva seu problema ou pergunta</label>
+                    <textarea id="textDescricao" placeholder="Ex: Preciso instalar um box de vidro no banheiro de 2x1,5m..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Enviar pelo WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        /* ============ ESTEIRA 3D ============ */
+        const carousel = document.getElementById('carousel3d');
+        const wrapper = document.getElementById('carouselWrapper');
+        const items = carousel.querySelectorAll('.carousel-3d-item');
+        const totalItems = items.length;
+        const angleStep = 360 / totalItems;
+        const radius = 240;
+
+        // Posicionar itens em círculo
+        items.forEach((item, i) => {
+            const angle = angleStep * i;
+            item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+        });
+
+        // Interação touch/mouse
+        let isDragging = false;
+        let startX = 0;
+        let currentAngle = 0;
+        let lastAngle = 0;
+
+        function stopAutoRotate() {
+            carousel.classList.remove('auto-rotating');
+            // Pegar ângulo atual da animação
+            const computed = getComputedStyle(carousel);
+            const matrix = computed.transform;
+            if (matrix && matrix !== 'none') {
+                // Extrair rotateY do matrix3d
+                const values = matrix.split('(')[1].split(')')[0].split(',');
+                if (values.length === 16) {
+                    // matrix3d
+                    const sinY = parseFloat(values[8]);
+                    const cosY = parseFloat(values[10]);
+                    currentAngle = Math.atan2(-sinY, cosY) * (180 / Math.PI);
+                } else if (values.length === 6) {
+                    currentAngle = lastAngle;
+                }
+            }
+            lastAngle = currentAngle;
+            carousel.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        function onPointerDown(e) {
+            stopAutoRotate();
+            isDragging = true;
+            startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            carousel.style.transition = 'none';
+        }
+
+        function onPointerMove(e) {
+            if (!isDragging) return;
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            const deltaX = clientX - startX;
+            const sensitivity = 0.4;
+            currentAngle = lastAngle + deltaX * sensitivity;
+            carousel.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        function onPointerUp() {
+            if (!isDragging) return;
+            isDragging = false;
+            lastAngle = currentAngle;
+            carousel.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }
+
+        // Touch events
+        wrapper.addEventListener('touchstart', onPointerDown, { passive: true });
+        wrapper.addEventListener('touchmove', onPointerMove, { passive: true });
+        wrapper.addEventListener('touchend', onPointerUp);
+
+        // Mouse events (para desktop)
+        wrapper.addEventListener('mousedown', onPointerDown);
+        window.addEventListener('mousemove', onPointerMove);
+        window.addEventListener('mouseup', onPointerUp);
+
+        /* ============ MODAL FORMULÁRIO ============ */
+        const overlay = document.getElementById('formOverlay');
+        const panel = document.getElementById('formPanel');
+        const btnOpen = document.getElementById('btnOrcamento');
+        const btnClose = document.getElementById('btnFechar');
+        const form = document.getElementById('formOrcamento');
+
+        btnOpen.addEventListener('click', () => {
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeForm() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        btnClose.addEventListener('click', closeForm);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeForm();
+        });
+
+        /* ============ ENVIAR PARA WHATSAPP ============ */
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const servico = document.getElementById('selectServico').value;
+            const descricao = document.getElementById('textDescricao').value.trim();
+
+            if (!servico || !descricao) return;
+
+            const mensagem = `Olá! Vim pelo site e gostaria de um orçamento.\n\n` +
+                             `📋 *Serviço:* ${servico}\n` +
+                             `📝 *Descrição:* ${descricao}`;
+
+            const url = `https://wa.me/5562993399718?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+
+            // Resetar form
+            form.reset();
+            closeForm();
+        });
+    })();
+    </script>
+</body>
+</html>
